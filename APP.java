@@ -1,8 +1,9 @@
-mport java.util.HashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 class BannerCharacterArray {
-    String[] pattern;
+
+    private String[] pattern;
 
     BannerCharacterArray(String[] pattern) {
         this.pattern = pattern;
@@ -15,11 +16,12 @@ class BannerCharacterArray {
 
 public class APP {
 
-
+    // Method to build character patterns
     public static Map<Character, BannerCharacterArray> buildCharacterMap() {
 
         Map<Character, BannerCharacterArray> map = new HashMap<>();
 
+        // Pattern for O
         map.put('O', new BannerCharacterArray(new String[]{
                 " ***** ",
                 "*     *",
@@ -30,6 +32,7 @@ public class APP {
                 " ***** "
         }));
 
+        // Pattern for P
         map.put('P', new BannerCharacterArray(new String[]{
                 "****** ",
                 "*     *",
@@ -54,6 +57,7 @@ public class APP {
         return map;
     }
 
+    // Method to display banner
     public static void displayBanner(String message, Map<Character, BannerCharacterArray> map) {
 
         int rows = 7;
@@ -68,6 +72,8 @@ public class APP {
 
                 if (charArray != null) {
                     line.append(charArray.getPattern()[i]).append("  ");
+                } else {
+                    line.append("       ").append("  "); // space if character not found
                 }
             }
 
@@ -75,6 +81,7 @@ public class APP {
         }
     }
 
+    // Main method
     public static void main(String[] args) {
 
         Map<Character, BannerCharacterArray> characterMap = buildCharacterMap();
